@@ -11,13 +11,16 @@ const app = express();
 app.use(express.json());
 
 app.use(cors({
-    origin: ["http://localhost:5173"],
+    origin: ["http://localhost:3000",],
     credentials: true
 }));
 app.use(cookieParser());
 
 app.use('/auth',UserRouter);
 
+app.use("/",(req,res)=>{
+    res.send("Hello from server")    
+})
 
 mongoose.connect('mongodb://127.0.0.1:27017/authentication')
 
